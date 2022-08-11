@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import packageJson from "./package.json";
 
@@ -27,6 +28,11 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       terser(),
+      postcss({
+        minimize: true,
+        modules: true,
+        extract: true,
+      }),
     ],
     external: ["react", "react-dom", "styled-components"],
   },
