@@ -1,8 +1,7 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
 
-import Button from "./Button";
-import { ButtonProps } from "./Button.types";
+import Button, { ButtonProps } from "./Button";
 
 export default {
   title: "Inputs/Button",
@@ -15,8 +14,15 @@ export default {
     },
   },
   argTypes: {
-    text: { description: "The content of the button" },
+    color: {
+      description: "Color of the button",
+      defaultValue: "primary",
+      control: {
+        type: "string",
+      },
+    },
     disabled: { description: "Whether the button is disabled" },
+    text: { description: "The content of the button" },
   },
 } as Meta<typeof Button>;
 
